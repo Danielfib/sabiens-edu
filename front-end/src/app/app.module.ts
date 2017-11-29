@@ -1,17 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MaterializeModule } from 'angular2-materialize';
+import { FormsModule } from '@angular/forms';
+import { RouterModule }   from '@angular/router';
+import { HttpModule } from '@angular/http';
 
-
+import { CadastroSistema } from './cadastroSistema.component';
 import { AppComponent } from './app.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    CadastroSistema,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule, 
+    RouterModule.forRoot([
+      {
+        path: 'cadastroSistema',
+        component: CadastroSistema
+      },
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
