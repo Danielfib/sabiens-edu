@@ -36,4 +36,5 @@ export class Conteudo extends Material {
   public set conclusao(value: string) {
     this._conclusao = value;
   }
+  
 }

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule }   from '@angular/router';
 import { HttpModule } from '@angular/http';
 
-import { CadastroSistema } from './cadastroSistema.component';
+import { CadastroConteudo } from './cadastroConteudo.component';
 import { AppComponent } from './app.component';
 
 
@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CadastroSistema,
+    CadastroConteudo,
   ],
   imports: [
     BrowserModule,
@@ -20,8 +20,8 @@ import { AppComponent } from './app.component';
     HttpModule, 
     RouterModule.forRoot([
       {
-        path: 'cadastroSistema',
-        component: CadastroSistema
+        path: 'cadastroConteudo',
+        component: CadastroConteudo
       },
     ])
   ],
