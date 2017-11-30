@@ -10,13 +10,13 @@ import { Topico } from './topico';
   templateUrl: './cadastroConteudo.component.html',
   styleUrls: ['./cadastroConteudo.component.css']
 })
-export class CadastroConteudo   {
+export class CadastroConteudo  {
   constructor(private conteudoService: ConteudoService) {}
   
   a: string;
   tituloTopico: string;
   descricaoTopico: string;
-  conteudo: Conteudo = new Conteudo(this.a, this.a, this.a, this.a, [new Topico(this.tituloTopico,this.descricaoTopico)] , this.a);
+  conteudo: Conteudo = new Conteudo(" ", " ", " ", " ", " ", [new Topico(this.tituloTopico,this.descricaoTopico)] ," ");
   conteudos : Conteudo[];
   criarConteudo(meu: Conteudo): void {
       console.log(meu);
@@ -24,7 +24,7 @@ export class CadastroConteudo   {
         .then(ab => {
           if (ab) {
             this.conteudos.push(ab);
-            this.conteudo = new Conteudo(this.a, this.a, this.a, this.a, [new Topico(this.tituloTopico,this.descricaoTopico)] , this.a);
+            this.conteudo = new Conteudo(" ", " ", " ", " ", " ", [new Topico(this.tituloTopico,this.descricaoTopico)] ," ");
           } else {
             alert("oi mãe to na globo");
           }
@@ -32,6 +32,11 @@ export class CadastroConteudo   {
       .catch(erro => alert(erro));
   }
 
+  ngOnInit(): void {
+    this.conteudoService.getConteudos()
+        .then(as => this.conteudos = as)
+        .catch(erro => alert(erro));
+  }
 }
 
 

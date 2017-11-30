@@ -2,17 +2,27 @@ import { Material } from './material';
 import { Topico } from './topico';
 
 export class Conteudo extends Material {
+  private _titulo : string;
   private _introducao: string;
   private _desenvolvimento: Topico[];
   private _conclusao: string;
 
-  constructor(nome: string, id: string, descricao: string, introducao: string, desenvolvimento: Topico[], conclusao: string) {
+  constructor(nome: string, id: string, descricao: string, titulo:string, introducao: string, desenvolvimento: Topico[], conclusao: string) {
     super(nome, id, descricao);
+    this._titulo = titulo;
     this._introducao = introducao;
     this._desenvolvimento = desenvolvimento;
     this._conclusao = conclusao;
   }
 
+
+  public get titulo(): string {
+    return this._titulo;
+  }
+
+  public set titulo(value:string) {
+  this._titulo = value;
+  }
   public get introducao(): string {
     return this._introducao;
   }

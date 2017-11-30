@@ -5,6 +5,7 @@ import { RouterModule }   from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 import { CadastroConteudo } from './cadastroConteudo.component';
+import { ConteudoService } from './conteudo.service';
 import { AppComponent } from './app.component';
 
 
@@ -25,7 +26,7 @@ import { AppComponent } from './app.component';
       },
     ])
   ],
-  providers: [],
+  providers: [ConteudoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

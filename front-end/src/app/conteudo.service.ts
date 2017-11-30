@@ -6,11 +6,12 @@ import { Conteudo } from './conteudo';
 
 @Injectable()
 export class ConteudoService {
-
+  conteudos: Conteudo[]= [];
   private headers = new Headers({'Content-Type': 'application/json'});
   private taURL = 'http://localhost:3000';
 
   constructor(private http: Http) { }
+
 
   criar(conteudo: Conteudo): Promise<Conteudo> {
     return this.http.post(this.taURL + "/conteudos",JSON.stringify(conteudo), {headers: this.headers})
@@ -25,4 +26,12 @@ export class ConteudoService {
     console.error('deu ruim',erro);
     return Promise.reject(erro.message || erro);
   }
+
+  getConteudos(): Promise<Conteudo[]> {
+    return this.http.get(this.taURL + "/conteudo")
+    .toPromise()
+    .then(res => res.json() as Conteudo[])
+    .catch(this.deuRuim);
+}
+  
 }
