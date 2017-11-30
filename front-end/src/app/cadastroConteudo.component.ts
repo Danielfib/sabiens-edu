@@ -10,12 +10,11 @@ import { Topico } from './topico';
   templateUrl: './cadastroConteudo.component.html',
   styleUrls: ['./cadastroConteudo.component.css']
 })
-export class CadastroConteudo  {
-  constructor(private conteudoService: ConteudoService) {}
-  nome:string;
+export class CadastroConteudo {
+  cadastroServico = new ConteudoService();
+  titulo:string;
   id:string;
   descricao:string;
-  titulo: string;
   introducao:string;
   nomeTopico:string;
   descricaoTopico:string;
@@ -23,33 +22,21 @@ export class CadastroConteudo  {
 
   conteudo: Conteudo = new Conteudo("nome ", "id ", "desc ", "titulo", " ", [ ] ," ");
   conteudos : Conteudo[];
+  topico: Topico[] = [];
+ 
+  
 
-  criarConteudo(nome:string,id:string ,descricao:string, titulo: string, introducao:string, nomeTopico:string, descricaoTopico:string, conclusao:string ): void { 
-      this.conteudo.nome = nome;
-      console.log(this.conteudo);
-      this.conteudo.id = id;
-      this.conteudo.descricao = descricao ;
-      this.conteudo.titulo = titulo;
-      this.conteudo.introducao= introducao;
-      this.conteudo.conclusao = conclusao;
-      
-      this.conteudoService.criar(this.conteudo)
-        .then(ab => {
-          if (ab) {
-            this.conteudos.push(ab);
-            this.conteudo = new Conteudo(" ", " ", " ", " ", " ", [new Topico(" " ," ")] ," ");
-          } else {
-            alert("oi mãe to na globo");
-          }
-      })
-      .catch(erro => alert(erro));
-  }
-
-  ngOnInit(): void {
-    this.conteudoService.getConteudos()
-        .then(as => this.conteudos = as)
-        .catch(erro => alert(erro));
+  gravar(s:Conteudo): void{
+    this.conteudo.nome = this.titulo;
+    this.conteudo.id = this.titulo;
+    this.conteudo.descricao = this.descricao ;
+    this.conteudo.titulo = this.titulo;
+    this.conteudo.introducao= this.introducao;
+    this.topico.push(new Topico(this.nomeTopico,this.descricaoTopico))    
+    this.conteudo.desenvolvimento = this.topico;
+    this.conteudo.conclusao = this.conclusao;
+    console.log(this.conteudo);
+    this.cadastroServico.gravar(this.conteudo);
   }
 }
-
-
+  
