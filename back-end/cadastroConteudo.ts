@@ -7,7 +7,7 @@ export class CadastroConteudoBack {
 
   criar(conteudo: Conteudo): Conteudo {
     var result = null;
-    result = new Conteudo(conteudo.nome,conteudo.id,conteudo.descricao,undefined,undefined,undefined);
+    result = new Conteudo(conteudo.nome,conteudo.id,conteudo.descricao,undefined,undefined,undefined,undefined);
     this.conteudos.push(result);
     return result;
   }

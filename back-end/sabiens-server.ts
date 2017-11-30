@@ -26,9 +26,9 @@ app.post('/conteudo', function (req: express.Request, res: express.Response) {
     var conteudo: Conteudo = <Conteudo> req.body; //verificar se é mesmo Aluno!
     conteudo = cadastro.criar(conteudo);
     if (Conteudo) {
-      res.send({"success": "O aluno foi cadastrado com sucesso"});
+      res.send({"success": "O conteudo foi cadastrado com sucesso"});
     } else {
-      res.send({"failure": "O aluno não pode ser cadastrado"});
+      res.send({"failure": "O conteudo não pode ser cadastrado"});
     }
   })
 

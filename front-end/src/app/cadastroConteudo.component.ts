@@ -12,19 +12,32 @@ import { Topico } from './topico';
 })
 export class CadastroConteudo  {
   constructor(private conteudoService: ConteudoService) {}
-  
-  a: string;
-  tituloTopico: string;
-  descricaoTopico: string;
-  conteudo: Conteudo = new Conteudo(" ", " ", " ", " ", " ", [new Topico(this.tituloTopico,this.descricaoTopico)] ," ");
+  nome:string;
+  id:string;
+  descricao:string;
+  titulo: string;
+  introducao:string;
+  nomeTopico:string;
+  descricaoTopico:string;
+  conclusao:string;
+
+  conteudo: Conteudo = new Conteudo("nome ", "id ", "desc ", "titulo", " ", [ ] ," ");
   conteudos : Conteudo[];
-  criarConteudo(meu: Conteudo): void {
-      console.log(meu);
-      this.conteudoService.criar(meu)
+
+  criarConteudo(nome:string,id:string ,descricao:string, titulo: string, introducao:string, nomeTopico:string, descricaoTopico:string, conclusao:string ): void { 
+      this.conteudo.nome = nome;
+      console.log(this.conteudo);
+      this.conteudo.id = id;
+      this.conteudo.descricao = descricao ;
+      this.conteudo.titulo = titulo;
+      this.conteudo.introducao= introducao;
+      this.conteudo.conclusao = conclusao;
+      
+      this.conteudoService.criar(this.conteudo)
         .then(ab => {
           if (ab) {
             this.conteudos.push(ab);
-            this.conteudo = new Conteudo(" ", " ", " ", " ", " ", [new Topico(this.tituloTopico,this.descricaoTopico)] ," ");
+            this.conteudo = new Conteudo(" ", " ", " ", " ", " ", [new Topico(" " ," ")] ," ");
           } else {
             alert("oi mãe to na globo");
           }

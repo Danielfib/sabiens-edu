@@ -2,11 +2,18 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const material_1 = require("./material");
 class Conteudo extends material_1.Material {
-    constructor(nome, id, descricao, introducao, desenvolvimento, conclusao) {
+    constructor(nome, id, descricao, titulo, introducao, desenvolvimento, conclusao) {
         super(nome, id, descricao);
+        this._titulo = titulo;
         this._introducao = introducao;
         this._desenvolvimento = desenvolvimento;
         this._conclusao = conclusao;
+    }
+    get titulo() {
+        return this._titulo;
+    }
+    set titulo(value) {
+        this._titulo = value;
     }
     get introducao() {
         return this._introducao;

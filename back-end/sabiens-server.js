@@ -22,10 +22,10 @@ app.post('/conteudo', function (req, res) {
     var conteudo = req.body; //verificar se é mesmo Aluno!
     conteudo = cadastro.criar(conteudo);
     if (conteudo_1.Conteudo) {
-        res.send({ "success": "O aluno foi cadastrado com sucesso" });
+        res.send({ "success": "O conteudo foi cadastrado com sucesso" });
     }
     else {
-        res.send({ "failure": "O aluno não pode ser cadastrado" });
+        res.send({ "failure": "O conteudo não pode ser cadastrado" });
     }
 });
 app.get('/exemplo', function () {

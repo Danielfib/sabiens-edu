@@ -14,7 +14,7 @@ export class ConteudoService {
 
 
   criar(conteudo: Conteudo): Promise<Conteudo> {
-    return this.http.post(this.taURL + "/conteudos",JSON.stringify(conteudo), {headers: this.headers})
+    return this.http.post(this.taURL + "/conteudo",JSON.stringify(conteudo), {headers: this.headers})
     .toPromise()
     .then(res => {
        if (res.json().success) {return conteudo;} else {return null;}
