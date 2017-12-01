@@ -19,24 +19,30 @@ export class CadastroConteudo {
   nomeTopico:string;
   descricaoTopico:string;
   conclusao:string;
-
-  conteudo: Conteudo = new Conteudo("nome ", "id ", "desc ", "titulo", " ", [ ] ," ");
+  conteudo: Conteudo = new Conteudo("", "", "", "", [ ] ,"");
   conteudos : Conteudo[];
   topico: Topico[] = [];
- 
-  
 
-  gravar(s:Conteudo): void{
+  conteudoExistente: boolean = false;
+
+  gravar(): void{
     this.conteudo.nome = this.titulo;
-    this.conteudo.id = this.titulo;
+    this.conteudo.id = String(this.cadastroServico.quantidadeConteudos());
     this.conteudo.descricao = this.descricao ;
-    this.conteudo.titulo = this.titulo;
     this.conteudo.introducao= this.introducao;
     this.topico.push(new Topico(this.nomeTopico,this.descricaoTopico))    
     this.conteudo.desenvolvimento = this.topico;
     this.conteudo.conclusao = this.conclusao;
-    console.log(this.conteudo);
-    this.cadastroServico.gravar(this.conteudo);
+    if ( this.cadastroServico.gravarConteudo(this.conteudo) ) {
+      this.conteudos.push(this.conteudo);      
+    }else{
+      this.conteudoExistente=true;
+      alert("Já existe um conteúdo com esse título");
+    }
+    this.topico = [];        
+    this.conteudo = new Conteudo("", "", "", "", [ ] ,"");
+    
   }
+
 }
   

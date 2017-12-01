@@ -14,7 +14,6 @@ export abstract class Material {
   /*
   .
    */
-   
   public get nome(): string {
     return this._nome;
   }

@@ -2,12 +2,21 @@ import { Conteudo } from './conteudo';
 
 export class ConteudoService {
   conteudos: Conteudo[] = [];
-  gravar(conteudo: Conteudo): Conteudo {
+  gravarConteudo(conteudo: Conteudo): String {
     var result = null;
-    this.conteudos.push(conteudo);
-    console.log(this.conteudos);
-    result = conteudo;
+    if(this.conteudoExistente(conteudo.nome)){
+      this.conteudos.push(conteudo);
+      result = conteudo;
+      console.log(this.conteudos);
+    } else {
+      console.log("deu certo, ele identificou um conteudo preexistente");
+    }
     return result;
   }
-  
+  quantidadeConteudos(): number {
+    return this.conteudos.length;
+  }
+  conteudoExistente(titulo:string): boolean {
+    return !this.conteudos.find(conteudoX => conteudoX.nome == titulo);
+  }
 }
