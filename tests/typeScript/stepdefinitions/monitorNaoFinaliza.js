@@ -16,7 +16,7 @@ defineSupportCode(function ({ Given, When, Then }) {
     })
 
     Given(/^vê a “lista de tarefa de criação do formulário do Sistema Neurológico“ igualmente vazia." $/, async (title, intro, desv,concl) => {
-        await $("a[name='listaTarefas']").click();        
+        await $("a[name='listaTarefas']").click();
         await $("input[name='titulo']").sendKeys(<string> title); //Adicionando o conteudo na lista
         await $("input[name='introducao']").sendKeys(<string> intro);
         await $("input[name='desenvolvimento']").sendKeys(<string> desv);
@@ -38,15 +38,15 @@ defineSupportCode(function ({ Given, When, Then }) {
     
       
     Given(/^Preenche o campo Introdução com "([^\"]*)"$/, async (intro) => {
-        await $("input[name='intro']").sendKeys(<string> intro); 
-    }); 
+        await $("input[name='intro']").sendKeys(<string> intro);
+    });
 
     Given(/^Preenche o campo desenvolimento com "([^\"]*)"$/, async (desv) => {
-        await $("input[name='desenvolvimento']").sendKeys(<string> desv); 
+        await $("input[name='desenvolvimento']").sendKeys(<string> desv);
     });
     
     Given(/^Preenche o campo Conclusão e comentários com "([^\"]*)"$/, async (conclusao) => {
-        await $("input[name='conclusao']").sendKeys(<string> conclusao); 
+        await $("input[name='conclusao']").sendKeys(<string> conclusao);
     });
     
 
@@ -62,5 +62,5 @@ defineSupportCode(function ({ Given, When, Then }) {
         await sameTitle;
         await sameTitle.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
     });
-}) 
+})
 */
