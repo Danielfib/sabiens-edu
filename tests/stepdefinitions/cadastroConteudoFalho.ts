@@ -7,27 +7,25 @@ let sameTitle = ((elem, title) => elem.element(by.name('titleList')).getText().t
 
 defineSupportCode(function ({ Given, When, Then }) {
 
-    Given(/^Está na página de Sistema Respiratorio$/, async () => {
-        await browser.get("http://localhost:4200/adm/");
+    Given(/^Está na página de Cadastro de Conteudo$/, async () => {
+        await browser.get("http://localhost:4200/");
         await $("a[name='sistemas']").click();
-        await $("a[name='sisResp']").click();
-
-        await browser.get("http://localhost:4200/adm/Sistemas/SistemaRespiratorio/"); // aguarda para entrar novamente na pagina
-        await expect(browser.getTitle()).to.eventually.equal('Sistema Respiratório'); // observa se voltou para pagina do sistema
+        await $("a[name='botaoAdd']").click();
+        await browser.get("http://localhost:4200/cadastroConteudo/"); // aguarda para entrar novamente na pagina
+        //await expect(browser.getTitle()).to.eventually.equal('Sistema Respiratório'); // observa se voltou para pagina do sistema
         
     })
 
-    Given(/^so está contidos na lista de conteúdo o seguinte titulo "([^\"]*)" vazia" $/, async (title, intro, desv,concl) => {
+    Given(/^so está contidos na lista de conteúdo o conteudo com seguinte titulo "([^\"]*)" , descricao de "([^\"]*)" , introducao de "([^\"]*)" , desenvolvimento com titulo de "([^\"]*)" e descricao "([^\"]*)" e por fim, conclusao com "([^\"]*)" $/, async (titulo,descriConteudo, intro, nomeTopico, descriTopico ,concl) => {
         
-        await $("a[name='addConteudo']").click();
-        await browser.get("http://localhost:4200/adm/Sistemas/SistemaRespiratorio/addConteudo"); // aguarda para entrar novamente na paginato 
-        await expect(browser.getTitle()).to.eventually.equal('Adicionar conteudo');//checa se está
-        await $("input[name='titulo']").sendKeys(<string> title); //Adicionando o conteudo na lista
+        //await expect(browser.getTitle()).to.eventually.equal('Adicionar conteudo');//checa se está
+        await $("input[name='titulo']").sendKeys(<string> titulo); //Adicionando o conteudo na lista
+        await $("input[name='descricao']").sendKeys(<string> descriConteudo);
         await $("input[name='introducao']").sendKeys(<string> intro);
-        await $("input[name='desenvolvimento']").sendKeys(<string> desv);
+        await $("input[name='nomeTopico']").sendKeys(<string> nomeTopico);
+        await $("input[name='descriTopico']").sendKeys(<string> descriTopico);
         await $("input[name='conclusao']").sendKeys(<string> concl);
-        await element(by.buttonText('inserir')).click(); //inserir
-
+        await element(by.buttonText('ENVIAR')).click(); //inserir
         await browser.get("http://localhost:4200/adm/Sistemas/SistemaRespiratorio/"); // aguarda para entrar novamente na pagina
         await expect(browser.getTitle()).to.eventually.equal('Sistema Respiratório'); // observa se voltou para pagina do sistema
         

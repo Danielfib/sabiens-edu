@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Conteudo } from './conteudo';
 import { ConteudoService } from './conteudo.service';
 import { Topico } from './topico';
+import { ViewChild } from '@angular/core';
 
 
 @Component({
@@ -11,6 +12,8 @@ import { Topico } from './topico';
   styleUrls: ['./cadastroConteudo.component.css']
 })
 export class CadastroConteudo {
+  title = 'nozes';
+  
   cadastroServico = new ConteudoService();
   titulo:string;
   id:string;
@@ -20,8 +23,9 @@ export class CadastroConteudo {
   descricaoTopico:string;
   conclusao:string;
   conteudo: Conteudo = new Conteudo("", "", "", "", [ ] ,"");
-  conteudos : Conteudo[];
+  conteudos : Conteudo[]= [];
   topico: Topico[] = [];
+  novo:Topico;
 
   conteudoExistente: boolean = false;
 
@@ -30,17 +34,19 @@ export class CadastroConteudo {
     this.conteudo.id = String(this.cadastroServico.quantidadeConteudos());
     this.conteudo.descricao = this.descricao ;
     this.conteudo.introducao= this.introducao;
-    this.topico.push(new Topico(this.nomeTopico,this.descricaoTopico))    
+    this.novo = new Topico(this.nomeTopico,this.descricaoTopico) ;
+    this.topico.push(new Topico(this.nomeTopico,this.descricaoTopico));
     this.conteudo.desenvolvimento = this.topico;
     this.conteudo.conclusao = this.conclusao;
-    if ( this.cadastroServico.gravarConteudo(this.conteudo) ) {
-      this.conteudos.push(this.conteudo);      
+    if ( this.cadastroServico.gravarConteudo(this.conteudo) ) { 
+      this.conteudos.push(this.conteudo);
     }else{
       this.conteudoExistente=true;
       alert("Já existe um conteúdo com esse título");
     }
-    this.topico = [];        
     this.conteudo = new Conteudo("", "", "", "", [ ] ,"");
+    this.topico = [];        
+    
     
   }
 

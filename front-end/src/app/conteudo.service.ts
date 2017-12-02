@@ -5,9 +5,11 @@ export class ConteudoService {
   gravarConteudo(conteudo: Conteudo): String {
     var result = null;
     if(this.conteudoExistente(conteudo.nome)){
+      console.log("nome visto ", conteudo.nome);
+      
       this.conteudos.push(conteudo);
       result = conteudo;
-      console.log(this.conteudos);
+      console.log("array do service ", this.conteudos);
     } else {
       console.log("deu certo, ele identificou um conteudo preexistente");
     }

@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="input-field col s4">
-                <input [(ngModel)]="titulo" name="titulo" id="first_name2" type="text" class="validate">
+                <input #titulozao [(ngModel)]="titulo" name="titulo" id="first_name2" type="text" class="validate">
                 <label class="active"  for="first_name2">Título</label>
             </div>
 
@@ -39,7 +39,7 @@
                     <form class="col s12">
                         <div class="row">
                             <div class="input-field col s12">
-                            <textarea [(ngModel)]="nomeTopico" name="nometopico" id="textarea2" class="materialize-textarea"></textarea>
+                            <textarea [(ngModel)]="nomeTopico" name="nomeTopico" id="textarea2" class="materialize-textarea"></textarea>
                             <label for="textarea1">Titulo do tópico</label>
                             </div>
                         </div>
