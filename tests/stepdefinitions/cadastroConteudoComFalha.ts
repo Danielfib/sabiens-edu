@@ -1,17 +1,20 @@
-/*import { defineSupportCode } from 'cucumber';
+import { defineSupportCode } from 'cucumber';
 import { browser, $, element, ElementArrayFinder, by } from 'protractor';
+import {async} from "q";
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
-let sameTitle = ((elem, title) => elem.element(by.name('titulos')).getText().then(text => text === title));
+let sleep = (ms => new Promise(resolve => setTimeout(resolve, ms)));
 
-defineSupportCode(function ({ Given, When, Then }) {
+defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
+
+    setDefaultTimeout(60 * 1000);
 
     Given(/^Estou na página de Cadastro de Conteudo$/, async () => {
         await browser.get("http://localhost:4200/");
         await $("a[name='sistemas']").click();
         await $("a[name='botaoAdd']").click();
-        await browser.get("http://localhost:4200/cadastroConteudo"); // aguarda para entrar novamente na pagina
+        //await browser.get("http://localhost:4200/cadastroConteudo"); // aguarda para entrar novamente na pagina
         //await expect(browser.getTitle()).to.eventually.equal('Sistema Respiratório'); // observa se voltou para pagina do sistema
         
     })
@@ -26,35 +29,22 @@ defineSupportCode(function ({ Given, When, Then }) {
         await $("textarea[name='descricaoTopico']").sendKeys(<string> descriTopico);
         await $("textarea[name='conclusao']").sendKeys(<string> concl);
         await $("a[name='send']").click(); //inserir
-        await browser.get("http://localhost:4200/cadastroConteudo");
     
-    })
-    
-    Given(/^NADA "([^\"]*)"$/, async (title) => {
-        await $("input[name='titulo']").sendKeys(<string> title); //Adicionando o conteudo na lista
-    
-    })
-    
-    Given(/^Preencho o campo Descricao com "([^\"]*)"$/, async (descricao) => {
-        await $("input[name='descricao']").sendKeys(<string> descricao);
     })
 
-    Given(/^Preencho o campo Introdução com "([^\"]*)"$/, async (intro) => {
-        await $("textarea[name='introducao']").sendKeys(<string> intro);
-    })
-
-    Given(/^Preencho o campo Desenvolimento com título de  "([^\"]*)" e descrição de "([^\"]*)" $/, async (titulo, descricao) => {
-        await $("textarea[name='nomeTopico']").sendKeys(<string> titulo);
-        await $("textarea[name='descricaoTopico']").sendKeys(<string> descricao);
+    Given(/^Adiciono na lista de conteudo o conteudo com seguinte titulo "([^\"]*)" , descricao de "([^\"]*)" , introducao de "([^\"]*)" , desenvolvimento com titulo de "([^\"]*)" e descricao "([^\"]*)" e por fim, conclusao com "([^\"]*)"$/, async (titulo,descriConteudo, intro, nomeTopico, descriTopico ,concl) => {
         
-    })
+        //await expect(browser.getTitle()).to.eventually.equal('Adicionar conteudo');//checa se está
+        await $("input[name='titulo']").sendKeys(<string> titulo); //Adicionando o conteudo na lista
+        await $("input[name='descricao']").sendKeys(<string> descriConteudo);
+        await $("textarea[name='introducao']").sendKeys(<string> intro);
+        await $("textarea[name='nomeTopico']").sendKeys(<string> nomeTopico);
+        await $("textarea[name='descricaoTopico']").sendKeys(<string> descriTopico);
+        await $("textarea[name='conclusao']").sendKeys(<string> concl);
     
-    Given(/^Preencho o campo Conclusão com "([^\"]*)"$/, async (conclusao) => {
-        await $("textarea[name='conclusao']").sendKeys(<string> conclusao);
     })
-    
 
-    When(/^Eu tento inserir o conteudo$/, async (name, cpf) => {
+    When(/^Eu tento inserir o conteudo$/, async () => {
         await $("a[name='send']").click();
     })
 
@@ -64,9 +54,6 @@ defineSupportCode(function ({ Given, When, Then }) {
         var sameTitle = listaConteudo.filter(elem => sameTitle(elem,title));
         await sameTitle;
         await sameTitle.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
-        
-    })
-    
+        */
+    }) 
 })
-
-*/

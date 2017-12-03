@@ -7,11 +7,7 @@ Scenario: Tentativa de inserção conteúdo à um sistema do corpo humano que j�
 
 Given Estou na página de Cadastro de Conteudo
 Given So está contidos na lista de conteúdo o conteudo com seguinte titulo "Resumo rápido do Sistema Respiratorio" , descricao de "orem ipsum dolor sit" , introducao de "orem ipsum dolor sit" , desenvolvimento com titulo de "lorem ipsum dolor sit" e descricao "orem ipsum dolor sit" e por fim, conclusao com "orem ipsum dolor sit"
-Given Preencho o campo Título com “Resumo rápido do Sistema Respiratorio” 
-Given Preencho o campo Descricao com “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut” 
-Given Preencho o campo Introdução com “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut” 
-Given Preencho o campo Desenvolimento com título de  "dale" e descrição de "dale" 
-Given Preencho o campo Conclusão com “Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut” 
+Given Adiciono na lista de conteudo o conteudo com seguinte titulo "Resumo rápido do Sistema Respiratorio" , descricao de "Descricao ipsum dolor sit" , introducao de "Introducao ipsum dolor sit" , desenvolvimento com titulo de "ipsum dolor sit" e descricao "ipsum dolor sit" e por fim, conclusao com "ipsum dolor sit"
 When Eu tento inserir o conteudo
 Then Uma mensagem de erro em forma de alert com o texto  pois existe um conteudo com Título de
 

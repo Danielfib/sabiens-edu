@@ -1,4 +1,4 @@
-import { defineSupportCode } from 'cucumber';
+/*import { defineSupportCode } from 'cucumber';
 import { browser, $, element, ElementArrayFinder, by } from 'protractor';
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
@@ -26,12 +26,13 @@ defineSupportCode(function ({ Given, When, Then }) {
         await $("textarea[name='descricaoTopico']").sendKeys(<string> descriTopico);
         await $("textarea[name='conclusao']").sendKeys(<string> concl);
         await $("a[name='send']").click(); //inserir
+        await browser.get("http://localhost:4200/cadastroConteudo"); 
     
     })
-
-    Given(/^Preencho o campo Título com "([^\"]*)"$/, async (title) => {
-        await browser.get("http://localhost:4200/cadastroConteudo"); // aguarda para entrar novamente na pagina
+    
+    Given(/^NADA "([^\"]*)"$/, async (title) => {
         await $("input[name='titulo']").sendKeys(<string> title); //Adicionando o conteudo na lista
+    
     })
     
     Given(/^Preencho o campo Descricao com "([^\"]*)"$/, async (descricao) => {
@@ -55,14 +56,17 @@ defineSupportCode(function ({ Given, When, Then }) {
 
     When(/^Eu tento inserir o conteudo$/, async (name, cpf) => {
         await $("a[name='send']").click();
-
     })
 
     Then(/^Uma mensagem de erro em forma de alert com o texto  pois existe um conteudo com Título de$/, async (alertMes, title) => {
-        /*var listaConteudo : ElementArrayFinder = element.all(by.name('listaconteudo'));
+        /* var listaConteudo : ElementArrayFinder = element.all(by.name('listaconteudo'));
         await listaConteudo;
         var sameTitle = listaConteudo.filter(elem => sameTitle(elem,title));
         await sameTitle;
-        await sameTitle.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));*/
-    })
+        await sameTitle.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+        
+    }) 
+    
 })
+
+*/
